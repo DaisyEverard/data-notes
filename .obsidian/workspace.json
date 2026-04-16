@@ -1,0 +1,223 @@
+{
+  "main": {
+    "id": "73e81ce28b69aa86",
+    "type": "split",
+    "children": [
+      {
+        "id": "e0bd10566f577774",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d48a35746160313a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "General Data Stuff/Spark/Useful Functions.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Useful Functions"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3bb0e4021c840645",
+    "type": "split",
+    "children": [
+      {
+        "id": "d58be2c41b8601ab",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "07dd0b84440e2275",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "8a0605f8e2b9c5aa",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "storage layer",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "3c2bfac311ab5669",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f2df328d895910fd",
+    "type": "split",
+    "children": [
+      {
+        "id": "6626eefa794ba663",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "16aec5d2b3f85557",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Ingestion/Cloud Ingestion.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Cloud Ingestion"
+            }
+          },
+          {
+            "id": "16a107adf6fda395",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Ingestion/Cloud Ingestion.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Cloud Ingestion"
+            }
+          },
+          {
+            "id": "41206fc649d769de",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "8717a1e38df6001a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "72b217a9e64563a3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Ingestion/Cloud Ingestion.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Cloud Ingestion"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "d48a35746160313a",
+  "lastOpenFiles": [
+    "General Data Stuff/ACID Transactions.md",
+    "Images/glom example.png",
+    "General Data Stuff/Spark/Useful Functions.md",
+    "Glossary.md",
+    "associative and commutative.md",
+    "General Data Stuff/Spark/Distributed Compute.md",
+    "General Data Stuff/Spark/SparkSession.md",
+    "General Data Stuff/Spark/RDDs.md",
+    "General Data Stuff/Spark/Spark Overview.md",
+    "Images/Spark diagram.png",
+    "Images",
+    "Untitled 1.md",
+    "General Data Stuff/Spark",
+    "Infrastructure/Compute.md",
+    "Untitled.md",
+    "General Data Stuff/Hadoop.md",
+    "General Data Stuff/Bias.md",
+    "Untitled",
+    "Infrastructure/Delta Lake.md",
+    "Infrastructure/Table Types.md",
+    "Infrastructure/Overall Structure.md",
+    "Lakeflow Declarative Pipelines.md",
+    "Infrastructure",
+    "Lakeflow/Lakeflow Jobs.md",
+    "Lakeflow/Lakeflow.md",
+    "Lakeflow",
+    "Unity Catalog.md",
+    "General Data Stuff/SQL Command Types.md",
+    "General Data Stuff/MERGE INTO.md",
+    "Ingestion/Cloud Ingestion.md",
+    "Lakeflow/Lakeflow connect.md",
+    "Ingestion/Metadata and Rescued Data Columns.md",
+    "Ingestion",
+    "General Data Stuff"
+  ]
+}
