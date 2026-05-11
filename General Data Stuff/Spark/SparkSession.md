@@ -8,6 +8,8 @@ spark.stop()
 ```
 The default is to use the number of CPU cores on a local machine as the number of partitions.
 
+For session builder options see: https://spark.apache.org/docs/latest/configuration.html#available-properties
+
 `sparkContext` is the connection to the cluster which is used to create and transform RDDs.
 for locally stored data use `parallelize`
 
@@ -18,4 +20,3 @@ For external or large data on distributed file systems use different methods e.g
 ```
 rdd_txt = spark.sparkContext.textFile("file_name.txt", 10)
 ```
-

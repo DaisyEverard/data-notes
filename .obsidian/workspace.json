@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "General Data Stuff/Spark/Useful Functions.md",
+                "file": "Lakeflow/Lakeflow Jobs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Useful Functions"
+              "title": "Lakeflow Jobs"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "storage layer",
+                "query": "file arrival",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -183,22 +184,25 @@
       "bases:Create new base": false
     }
   },
-  "active": "d48a35746160313a",
+  "active": "8a0605f8e2b9c5aa",
   "lastOpenFiles": [
+    "Glossary.md",
+    "Lakeflow/Lakeflow Jobs.md",
+    "Lakeflow/Lakeflow connect.md",
+    "Infrastructure/Compute.md",
+    "General Data Stuff/SQL Command Types.md",
+    "General Data Stuff/Spark/Useful Functions.md",
+    "General Data Stuff/Spark/SparkSession.md",
+    "General Data Stuff/Spark/Spark Overview.md",
     "General Data Stuff/ACID Transactions.md",
     "Images/glom example.png",
-    "General Data Stuff/Spark/Useful Functions.md",
-    "Glossary.md",
     "associative and commutative.md",
     "General Data Stuff/Spark/Distributed Compute.md",
-    "General Data Stuff/Spark/SparkSession.md",
     "General Data Stuff/Spark/RDDs.md",
-    "General Data Stuff/Spark/Spark Overview.md",
     "Images/Spark diagram.png",
     "Images",
     "Untitled 1.md",
     "General Data Stuff/Spark",
-    "Infrastructure/Compute.md",
     "Untitled.md",
     "General Data Stuff/Hadoop.md",
     "General Data Stuff/Bias.md",
@@ -208,14 +212,11 @@
     "Infrastructure/Overall Structure.md",
     "Lakeflow Declarative Pipelines.md",
     "Infrastructure",
-    "Lakeflow/Lakeflow Jobs.md",
     "Lakeflow/Lakeflow.md",
     "Lakeflow",
     "Unity Catalog.md",
-    "General Data Stuff/SQL Command Types.md",
     "General Data Stuff/MERGE INTO.md",
     "Ingestion/Cloud Ingestion.md",
-    "Lakeflow/Lakeflow connect.md",
     "Ingestion/Metadata and Rescued Data Columns.md",
     "Ingestion",
     "General Data Stuff"

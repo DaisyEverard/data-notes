@@ -2,6 +2,7 @@ Idempotency - Tracking files which have previously been ingested and only taking
 
 [[RDDs]] - Resilient Distributed Datasets
 RDPGs - resilient distributed property graphs
+DAG - Directed Acyclic Graph. The way
 
 **Commuative Process** - a process where order does not matter
 **Associative Process** - a process where grouping does not matter.
