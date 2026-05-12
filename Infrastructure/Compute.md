@@ -1,13 +1,14 @@
 ### Interactive Clusters
 aka all-purpose
-- can be shared by multiple users
+- can be shared by multiple users but this can cause conflicts and job delays.
 - for ad-hoc analysis, data exploration, or dev
-- Do not use in Prod, not cost efficient
+- Do not use in Prod, not cost efficient and limited scalability. 
 
 ### Job Clusters
 - 50% cheaper than Interactive because they Terminate when job ends.
 - Subject to cloud provider startup times
 - can re-use the same cluster across tasks in one job
+- Each job gets dedicated resources for predictable performance but requires more configuration and management overhead
 ### Serverless
 - fully managed
 - Faster clusters

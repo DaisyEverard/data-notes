@@ -8,20 +8,35 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d48a35746160313a",
+            "id": "5dfa3b829a8eae48",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lakeflow/Lakeflow Jobs.md",
+                "file": "Glossary.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lakeflow Jobs"
+              "title": "Glossary"
+            }
+          },
+          {
+            "id": "eec50d90c805758d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Infrastructure/Compute.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Compute"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -53,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file arrival",
+                "query": "Interactive",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "f2df328d895910fd",
@@ -184,40 +199,41 @@
       "bases:Create new base": false
     }
   },
-  "active": "8a0605f8e2b9c5aa",
+  "active": "eec50d90c805758d",
   "lastOpenFiles": [
+    "General Data Stuff/Optimization.md",
+    "General Data Stuff/Spark/Useful Functions.md",
+    "General Data Stuff/Spark/Distributed Compute.md",
     "Glossary.md",
+    "General Data Stuff/Spark/Spark Overview.md",
+    "General Data Stuff/Spark/RDDs.md",
+    "Infrastructure/System Tables.md",
+    "General Data Stuff/SQL stuff",
+    "Infrastructure/Table Types.md",
     "Lakeflow/Lakeflow Jobs.md",
     "Lakeflow/Lakeflow connect.md",
     "Infrastructure/Compute.md",
-    "General Data Stuff/SQL Command Types.md",
-    "General Data Stuff/Spark/Useful Functions.md",
+    "General Data Stuff/SQL stuff/SQL Command Types.md",
     "General Data Stuff/Spark/SparkSession.md",
-    "General Data Stuff/Spark/Spark Overview.md",
     "General Data Stuff/ACID Transactions.md",
     "Images/glom example.png",
     "associative and commutative.md",
-    "General Data Stuff/Spark/Distributed Compute.md",
-    "General Data Stuff/Spark/RDDs.md",
     "Images/Spark diagram.png",
     "Images",
     "Untitled 1.md",
     "General Data Stuff/Spark",
-    "Untitled.md",
     "General Data Stuff/Hadoop.md",
     "General Data Stuff/Bias.md",
     "Untitled",
     "Infrastructure/Delta Lake.md",
-    "Infrastructure/Table Types.md",
     "Infrastructure/Overall Structure.md",
     "Lakeflow Declarative Pipelines.md",
     "Infrastructure",
     "Lakeflow/Lakeflow.md",
     "Lakeflow",
     "Unity Catalog.md",
-    "General Data Stuff/MERGE INTO.md",
+    "General Data Stuff/SQL stuff/MERGE INTO.md",
     "Ingestion/Cloud Ingestion.md",
-    "Ingestion/Metadata and Rescued Data Columns.md",
     "Ingestion",
     "General Data Stuff"
   ]
