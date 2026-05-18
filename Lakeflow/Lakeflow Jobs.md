@@ -37,13 +37,4 @@ For a full list see: https://docs.databricks.com/aws/en/jobs/dynamic-value-refer
 based on if past jobs succeeded or failed in whatever combination you need. e.g. all failed, some passed. Waits until all task before either pass or fail
 #### **retries**
  Task or job level. Can configure number of retries and time between retries.
-#### **notification alerts** 
-Can configure up to 3 destinations for each of the alert types. "Succeeded with Failures" counts as a success. You can configure different alert settings at task level. 
-The alert types are: 
-- Start, 
-- Success
-- Failure
-- Duration warning
-- Streaming backlog
-- Custom - use webhook integrations for more complex custom logic
 

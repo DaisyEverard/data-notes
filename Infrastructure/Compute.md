@@ -17,7 +17,8 @@ aka all-purpose
 
 Has a performance optimized toggle
 off is standard and focuses on cost-efficiency with a longer startup time
-If a workload is time-sensitive turn on for faster startup but higher costs
+If a workload is time-sensitive turn on for faster start-up but higher costs
+Supports incremental refresh of materialized views using a cost-based optimizer
 ### SQL Warehouse
 - for SQL queries, dashboards, and BI
 - High concurrency + autoscaling for low latency

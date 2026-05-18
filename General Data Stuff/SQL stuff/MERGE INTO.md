@@ -14,7 +14,7 @@ t.name = s.name (any other fields )
 when matched means a row with id same in both tables. If the relationship isn't one to one this is more complicated
 Any fields not in the UPDATE SET will be left as they are in target.
 
-You could have multiple of any kind of block, for instance `when matched and s.status = 'update t.x = s.x...'` 
+You could have multiple of any kind of block, for instance `when matched and s.status = 'update' t.x = s.x...` 
 and 
 `when matched and s.status = 'delete' DELETE`
 
