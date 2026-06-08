@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Infrastructure/Monitoring.md",
+                "file": "Lakeflow/Lakeflow Declarative Pipelines.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Monitoring"
+              "title": "Lakeflow Declarative Pipelines"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "log",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -183,24 +183,26 @@
       "bases:Create new base": false
     }
   },
-  "active": "07dd0b84440e2275",
+  "active": "fc7f09faac963590",
   "lastOpenFiles": [
-    "Lakeflow/Lakeflow Jobs.md",
+    "General Data Stuff/CDC and SCD.md",
+    "Lakeflow/Lakeflow Declarative Pipelines.md",
+    "General Data Stuff/Optimization.md",
+    "Ingestion/Cloud Ingestion.md",
+    "Infrastructure/Table Types.md",
+    "General Data Stuff/SQL stuff/MERGE INTO.md",
+    "General Data Stuff/ACID Transactions.md",
     "Infrastructure/Monitoring.md",
+    "Lakeflow/Lakeflow Jobs.md",
     "Lakeflow/Streaming Joins.md",
     "Infrastructure/View types.md",
-    "Lakeflow/Lakeflow Declarative Pipelines.md",
     "Infrastructure/Compute.md",
     "Infrastructure/System Tables.md",
     "Infrastructure/Overall Structure.md",
     "Infrastructure/Delta Lake.md",
-    "Infrastructure/Table Types.md",
     "Glossary.md",
     "Lakeflow/Lakeflow.md",
     "Ingestion/Ingestion Types.md",
-    "General Data Stuff/SQL stuff/MERGE INTO.md",
-    "Ingestion/Cloud Ingestion.md",
-    "General Data Stuff/Optimization.md",
     "General Data Stuff/Spark/Useful Functions.md",
     "General Data Stuff/Spark/Distributed Compute.md",
     "General Data Stuff/Spark/Spark Overview.md",
@@ -209,12 +211,10 @@
     "Lakeflow/Lakeflow connect.md",
     "General Data Stuff/SQL stuff/SQL Command Types.md",
     "General Data Stuff/Spark/SparkSession.md",
-    "General Data Stuff/ACID Transactions.md",
     "Images/glom example.png",
     "associative and commutative.md",
     "Images/Spark diagram.png",
     "Images",
-    "Untitled 1.md",
     "General Data Stuff/Spark",
     "Untitled",
     "Infrastructure",

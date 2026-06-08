@@ -20,7 +20,7 @@ File names are guaranteed to be read only once so if you edit a file that has al
 
 Databricks managed table and metadata
 Data stored within Databrick's managed storage
-Dropping the table also deleted the table
+Dropping the table also deletes the data
 Recommended for creating new tables
 ## External Tables
 Databricks only manages the table metadata

@@ -29,7 +29,11 @@ The default number of partitions in spark is 200.
 ### Metadata optimization
 Structuring metadata to improve data discoverability and system performance.
 
-In data bricks this is largely done automatically by enabling predictive optimization and liquid clustering. You can run the `VACCUM` sql command to manage table versions. `OPTIMIZE` will compact small files.
+In data bricks this is largely done automatically by enabling predictive optimization and liquid clustering. You can run the `VACUUM` sql command to manage table versions. It removed unreferenced data files past a retention period defaulting to 7 days. You will not be able to time travel after a VACUUM. 
+log retention is json log.
+data retentions is for the actual data files.
+`OPTIMIZE` will compact small files.
+
 You should generally avoid excessive partitioning.
 
 ### Join Optimization
