@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "log",
+                "query": "flows",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -183,7 +184,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "fc7f09faac963590",
+  "active": "8a0605f8e2b9c5aa",
   "lastOpenFiles": [
     "General Data Stuff/CDC and SCD.md",
     "Lakeflow/Lakeflow Declarative Pipelines.md",

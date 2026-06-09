@@ -44,3 +44,19 @@ SEQUENCE BY ProcessDate
 COLUMNS * EXCEPT (operation)
 STORED AS SCD TYPE 1
 ```
+
+### Other
+
+Flows
+multiple flows writing to the same target. Union of different data sources from multiple pipelines. https://docs.databricks.com/aws/en/ldp/flows
+
+Sinks
+write pipeline outputs to external systems. Kafka, Delta across workspaces, or Azure Event-Hubs
+
+Liquid Clustering - Optimizes files for performance during pipeline runs
+
+Row-Level Security and Column masking - fine grained access control for streaming and materialized tables
+
+Change Data Feed (CDF) - capture row level changes from streaming tables and use them in downstream applications, such as audit logs or CDC propagation
+
+Databricks Asset Bundles (DABs) - enable you to programatically validate, deploy, and run Databricks resources such as pipelines for CI/CD prod workloads.
