@@ -10,7 +10,7 @@ joins all rows from both streaming tables each time the pipeline is run.
 If both sides are streaming you require a materialised view to keep results current and joins efficient. new rows from both tables are incrementally refreshed depending on pipeline config and compute mode.
 
 ### Streaming + Streaming (Incremental)
-Processed as data arrived. Only new data from each stream is joined not considering past data.
+Processed as data arrives. Only new data from each stream is joined not considering past data.
 Usually involves windowing logic, watermarking, and other advanced streaming concepts
 
 example: clickstream data, real time analytics

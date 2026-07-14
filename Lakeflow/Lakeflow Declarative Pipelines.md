@@ -1,5 +1,5 @@
 Pipelines that automatically handle execution plans, error handling, and dependency management
-They scale automatically and adapt to optimize for performance and cost efficiency. 
+They scale automatically and adapt to optimize for performance and cost efficiency. There is a dry-run capability to check pipeline without full execution.
 
 Lets you define ingestion and transformation tasks with SQL and Python without explicit orchestration logic. Allows Batch ingestion or Streaming ingestion 
 
@@ -31,7 +31,7 @@ If a materialized view uses expectations it will always be fully refreshed durin
 ### [[CDC and SCD]]
 https://docs.databricks.com/aws/en/ldp/developer/ldp-sql-ref-apply-changes-into
 There is a statement in pipelines called `AUTO CDC INTO` to handle upserts, insert, and deletes all in one.
-from and keys are enough for inserts and upserts, for deletes you need to specify when a delete happens, for instance there may be a column with a DELETE string of boolean flag.
+from and keys are enough for inserts and upserts, for deletes you need to specify when a delete happens, for instance there may be a column with a DELETE string or boolean flag.
 SEQUENCE BY defines the logical order of cdc events in the source
 COLUMNS states which columns from the source to include in the target as they may not be the same shape
 STORED AS allows you to use TYPE 1 (delete historical records) or TYPE 2 (retain historical records with validity periods). Default is type 1. If you do type 2 you will also need a TRACK HISTORY ON clause to specify which columns to track the history of.

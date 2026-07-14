@@ -65,3 +65,7 @@ format => 'type'
 
 use the [[MERGE INTO]] command to do updates, insertions, and deletions all in one query. It's great for slowly changing dimensions, incremental loads, and change data capture (cdc)
 
+If you want to automatically add new columns from the source in the target table in databricks, you can use MERGE WITH SCHEMA EVOLUTION
+
+
+

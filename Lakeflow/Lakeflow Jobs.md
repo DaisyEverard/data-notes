@@ -34,7 +34,14 @@ dynamic value references are calculated automatically but change on runtime. The
 For a full list see: https://docs.databricks.com/aws/en/jobs/dynamic-value-references
 
 #### **conditional task dependencies**
-based on if past jobs succeeded or failed in whatever combination you need. e.g. all failed, some passed. Waits until all task before either pass or fail
+based on if past jobs succeeded or failed in whatever combination you need. They will wait for all tasks to complete before continuing.
+- all succeeded
+- At least one succeeded
+- None Failed - diffferent to all succeded as it also allows skipped tasks
+- All done - ignore conditions, this exists because the default when not set is 'all succeeded'
+- At least one failed
+- All failed
+
 #### **retries**
  Task or job level. Can configure number of retries and time between retries.
 

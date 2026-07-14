@@ -10,3 +10,4 @@ tables:
 - job_run_timeline - each job run over time
 - job_task_run_timeline - each task run over time
 - Pipelines - pipelines basic info
+https://docs.databricks.com/aws/en/admin/system-tables/jobs
