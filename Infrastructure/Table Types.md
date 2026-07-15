@@ -27,3 +27,17 @@ Databricks only manages the table metadata
 Dropping the table does not delete the data
 Supports multiple formats including delta lake
 Ideal for sharing data across platforms or using existing external data.
+
+----
+
+## Table Attributes
+
+You can add tags to tables or to individual columns. For instance a PII tag to let users know where PII is stored
+```
+ALTER TABLE table
+SET TAGS (
+	'PII' = 'True',
+	'Quality' = 'bronze'
+)
+```
+You can see views by querying the <my_catalog>.information_schema.table_tags within a specific catalog, or system.information_schema.table_tags for all.

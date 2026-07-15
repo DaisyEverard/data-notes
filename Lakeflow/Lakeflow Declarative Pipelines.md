@@ -1,5 +1,6 @@
-Pipelines that automatically handle execution plans, error handling, and dependency management
-They scale automatically and adapt to optimize for performance and cost efficiency. There is a dry-run capability to check pipeline without full execution.
+Apache Spark™ Declarative Pipelines is a declarative framework for building batch and streaming data pipelines in SQL and Python. Lakeflow Declarative Pipelines extend and are interoperable with Spark Declarative Pipelines, while running on the performance-optimized Databricks Runtime.
+
+The pipelines automatically handle execution plans, error handling, and dependency management. They scale automatically and adapt to optimize for performance and cost efficiency. There is a dry-run capability to check pipeline without full execution.
 
 Lets you define ingestion and transformation tasks with SQL and Python without explicit orchestration logic. Allows Batch ingestion or Streaming ingestion 
 
@@ -27,6 +28,7 @@ DROP to drop the invalid row. Counts of dropped rows are logged
 FAIL fails the entire flow, other flows in the same pipeline continue.
 
 If a materialized view uses expectations it will always be fully refreshed during pipeline runs.
+You can check the pipeline UI or system tables for metrics on expectations. You can find out the number of records processed, how many records fail each constraint, the violation percentage, and the historical trends of other quality metrics of time.
 
 ### [[CDC and SCD]]
 https://docs.databricks.com/aws/en/ldp/developer/ldp-sql-ref-apply-changes-into
@@ -45,15 +47,81 @@ COLUMNS * EXCEPT (operation)
 STORED AS SCD TYPE 1
 ```
 
-### Other
+## Flows
+https://docs.databricks.com/aws/en/ldp/flows
+A flow is a simple unit of work which independently read, processed, and writes data. At it's simplest it could be a query plus a target. 
+They can be incremental with read checkpoints targeting and processed only the delta, or do a full refresh with a discard checkpoint then read and reprocess all records. This should be used after modifying transformation logic or fixing data quality issues.
 
-Flows
-multiple flows writing to the same target. Union of different data sources from multiple pipelines. https://docs.databricks.com/aws/en/ldp/flows
+Flows maintain their own checkpoints.
+- Flow Name = checkpoint identity - The name of a flow is also its checkpoint location in storage. 
+- Renaming Resets progress - A new name will mean the old checkpoint with the old name will be abandoned and the flow will have to reprocess all data to create a new checkpoint with the new name
+- Independent Progression - Flows do not affect other flow's processing
+- Failure Isolation - One failed flow does not fail others.
 
-Sinks
-write pipeline outputs to external systems. Kafka, Delta across workspaces, or Azure Event-Hubs
+Flows are usually created automatically and implicitly when a streaming table or materialized view is created. The default flow will share the target table's name. for instance:
+```
+CREATE OR REFRESH STREAMING TABLE target_table
+AS SELECT *
+FROM STREAM source_table;
+```
+You can create flows explicitly if you need to write to an existing table from a new source:
+```
+CREATE OR REFRESH STREAMING TABLE target_table;
+CREATE FLOW my_flow
+AS INSERT INTO target_table BY NAME
+SELECT * FROM STREAM source_table;
+```
 
-Liquid Clustering - Optimizes files for performance during pipeline runs
+A multi-flow pattern is when multiple different flows target the same table. 
+This is better than using a union pattern for incremental pipelines because of independent checkpoints meaning new sources can be added with a full refresh, one source failure doesn't block others, the lineage; error handling and monitoring is cleaner, and it's more scalable and maintainable.
+
+Data quality expectations using CONSTRAINT cannot be defined on a single flow, they must be defined on the target table. You can query the pipeline event log which have one row per flow update. for instance:
+```SELECT timestamp, table_name, output_rows,
+       data_quality.expectations
+FROM event_log("pipeline_id")
+WHERE event_type = 'flow_progress'
+  AND data_quality.expectations IS NOT NULL
+ORDER BY timestamp DESC;
+```
+
+## Liquid Clustering
+A data optimization technique for Delta lake. Replaces traditional partitioning and z-ordering instead using clustering keys to efficiently skip data.
+Optimizes files for performance during pipeline runs. Uses a hilbert curve to make file boundaries tighter. I've added a picture of a hilbert curve because maths is cool.
+![[hilbert.gif]]
+Hive partitioning used a rigid directory structure requiring a full rewrite to change the keys. Z-ordering required manual OPTIMIZE runs with a full rewrite on every run. 
+
+Liquid clustering is:
+- Incremental - only optimizes new or unclustered data so works for streaming and write-heavy workloads
+- Flexible - clustering keys can be updated at any time without full table rewrites. They can adapt to evolving query patterns
+- Self-Tuning - with CLUSTER BY AUTO databricks will select optimal keys based on query usage.
+
+On a delta table liquid clustering is used as described above to group small files together in a query-optimized way. In pipelines it is enabled directly on a streaming table with a cluster by  clause. 
+You can use CLUSTER BY AUTO to let databricks learn and evolved with query patterns. When this is first done the table properties will show up as clusterByAuto=true,clusteringColumns=[] as databricks needs some time to determine which columns to use.
+Alternatively you can select specific columns if you want full control and have a stable table with well-known query patterns. 
+For instance a regulatory or performance-critical table.
+You can use a hybrid approach and set columns initially but also enabling clusterByAuto.
+```
+CREATE OR REFRESH STREAMING TABLE my_table
+CLUSTER BY (region, order_date)
+AS SELECT * FROM STREAM source_table;
+```
+
+## Multiplex Pattern
+A way of efficiently processing multiple event types that arrive through a single data transport mechanism such as a kafka topic, cloud storage path, or message queue.
+
+Multiplex means you can ingest all the different event types in one ingestion pipeline with 1 checkpoint and 1 source scan shared across all the events. the reduced the maintenance and overhead in creating a separate pipeline for every event type.
+1. Everything is ingested into one bronze table
+2. Filter on the event type field to separate domains
+3. Fan out to domain specific tables and processing downstream
+
+## Sinks
+Sinks  provide a way to write streaming data from spark pipelines to external delta tables, apache kafka, azure event hubs, or a custom python sink.
+You can anly used the python API, not SQL. `append_flow` is the method used to write to a sink.
+
+
+## Other
+
+
 
 Row-Level Security and Column masking - fine grained access control for streaming and materialized tables
 
