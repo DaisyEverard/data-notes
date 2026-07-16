@@ -20,7 +20,7 @@ In notebooks and jobs they are scoped the the notebook or script. They no longer
 In Databricks SQL they are scoped the the query. multiple statements within the same query can use the temp view but it can't be reference in other queries in the same dashboard.
 Mostly used for intermediate queries that don't need to be exposed to end users
 ### Dynamic views
-Used to provide row or column level access control and to mask data.
+Used to provide row or column level access control and to mask data. The owner of the view needs access to the tables it queries, but another user can query the view without view permisison on the underlying tables, so make sure the view has proper access properties and doesn't expose anything it shouldn't
 
 ### Metric View
 define reusable business metrics to abstract logic for KPIs like revenue, customer count etc. Used for consistency in business logic. Defined in yaml.

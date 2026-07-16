@@ -30,20 +30,61 @@ FAIL fails the entire flow, other flows in the same pipeline continue.
 If a materialized view uses expectations it will always be fully refreshed during pipeline runs.
 You can check the pipeline UI or system tables for metrics on expectations. You can find out the number of records processed, how many records fail each constraint, the violation percentage, and the historical trends of other quality metrics of time.
 
+For more complex scenarios you will need to use advanced quality expectations. In practice this is achieved by chaining conditions and logic.
+Basic expectations have NOT NULL but there are many thing dies doesn't catch:
+- numeric anomaly - negative order quantity
+- termporal inconsistency - event date set to 50 years ago as default
+- range violation - 120% discount rate
+- optional field rules - field can be null but not if present must be >0
+- schema evolution - new columns added mid-stream break existing rules
+- Data loss - invalid records permanently dropped with no audit trail
+- 
+Check no rows were dropped between two tables:
+```
+CREATE OR REFRESH MATERIALIZED VIEW count_verification (
+  CONSTRAINT no_rows_dropped EXPECT (a_count == b_count)
+    ON VIOLATION FAIL UPDATE
+)
+AS SELECT * FROM
+  (SELECT COUNT(*) AS a_count FROM table_a),
+  (SELECT COUNT(*) AS b_count FROM table_b)
+```
+
+Check there are no records missing, for instance from a dim table.
+```
+CREATE OR REFRESH MATERIALIZED VIEW report_compare_tests (
+  CONSTRAINT no_missing_records EXPECT (d_key IS NOT NULL)
+    ON VIOLATION FAIL UPDATE
+)
+AS SELECT v.*, d.key AS d_key
+FROM vehicle_sales v
+LEFT OUTER JOIN dim d ON v.key = d.key
+```
+
+Primary Key uniqueness
+```
+CREATE OR REFRESH MATERIALIZED VIEW report_pk_tests (
+  CONSTRAINT unique_pk EXPECT (num_entries = 1)
+    ON VIOLATION FAIL UPDATE
+)
+AS SELECT pk, COUNT(*) AS num_entries
+FROM report
+GROUP BY pk
+```
 ### [[CDC and SCD]]
 https://docs.databricks.com/aws/en/ldp/developer/ldp-sql-ref-apply-changes-into
 There is a statement in pipelines called `AUTO CDC INTO` to handle upserts, insert, and deletes all in one.
 from and keys are enough for inserts and upserts, for deletes you need to specify when a delete happens, for instance there may be a column with a DELETE string or boolean flag.
 SEQUENCE BY defines the logical order of cdc events in the source
 COLUMNS states which columns from the source to include in the target as they may not be the same shape
-STORED AS allows you to use TYPE 1 (delete historical records) or TYPE 2 (retain historical records with validity periods). Default is type 1. If you do type 2 you will also need a TRACK HISTORY ON clause to specify which columns to track the history of.
+	STORED AS allows you to use TYPE 1 (delete historical records) or TYPE 2 (retain historical records with validity periods). Default is type 1. If you do type 2 you will also need a TRACK HISTORY ON clause to specify which columns to track the history of. if you don't specify a TRACK HISTORY ON clause all columns are treated as on group and  `__START_AT` and `__END_AT` columns are generated
 ```
 AUTO CDC INTO target
 FROM STREAM source
 KEYS (key1, key2)
 APPLY AS DELETE WHEN operation_col = 'DELETE'
 SEQUENCE BY ProcessDate
-COLUMNS * EXCEPT (operation)
+COLUMNS * EXCEPT (operation_col, irrelevant_col)
 STORED AS SCD TYPE 1
 ```
 
@@ -115,16 +156,53 @@ Multiplex means you can ingest all the different event types in one ingestion pi
 3. Fan out to domain specific tables and processing downstream
 
 ## Sinks
-Sinks  provide a way to write streaming data from spark pipelines to external delta tables, apache kafka, azure event hubs, or a custom python sink.
-You can anly used the python API, not SQL. `append_flow` is the method used to write to a sink.
+Sinks  provide a way to write streaming data from spark pipelines to any plain delta table outside of a pipeline's managed scope.
+You can only use the python API, not SQL.
+`append_flow` is the method used to write to a sink. It automatically handles checkpoints and only writes the delta
+
+Managed tables have data that stays in UC, there's full pipeline lineage tracking, expectations and CDC are supported, and you can create streaming tables and Materialized views.
+Sinks write to external systems outside databricks so are append only and can't support expectations. This however enables reverse ETL, operational use cases, and Iceberg Uniform. It supports Kafka, Event Hubs, and custom python sinks
+
+To define and write to sinks: 
+```
+from pyspark import pipelines as dp
+dp.create_sink(
+    name    = "my_sink",
+    format  = "delta",
+    options = {
+        "tableName": "catalog.schema.table"
+    }
+)
+```
+
+```
+@dp.append_flow(
+name   = "my_sink_flow",
+target = "my_sink"
+)
+def my_sink_flow():
+    return spark.readStream.table(
+        "schema.source_table"
+    )
+```
+
+## Iceberg Reads + Delta UniForm
+Delta UniForm enables cross-platform access to Delta tables by automatically generating Apache Iceberg metadata without duplication the underlying data. 
+This means you don't need multiple copies of the same data in different formats to support multiple platforms. This creates read only iceberg sources, writes must got through delta. 
+
+There is one set of parquet files with delta and iceberg metadata layers. The delta Transaction log `_delta_log/` and the Iceberg metadata at `metadata/*.metadata.json`. Unity catalog acts as the Iceberg REST catalog.
 
 
+The pre-requisites for iceberg reads are:
+- Must be on a plain external delta table e.g. one created with a delta sink. streaming tables and materialized views cannot have iceberg reads enabled. 
+- The table has no data written to it yet
+- disable deletion vectors as iceberg cannot represent soft deletes. 
+  `'delta.enableDeletionVectors' = 'false'`
+- Column identifiers need to be consistent between delta and iceberg schemas. `'delta.columnMapping.mode' = 'name'`
+- IcebergeCompatV2" enabled to activate delta's write protocol for iceberg `'delta.enableIcebergCompatV2'='true'`
+- universal format enabled to trigger async iceberg metadata generation after each delta commit. Generation is only triggered when the table is accessed by name, not by path.
+  `'delta.universalFormat.enabledFormats'='iceberg'`
+
+![[Pasted image 20260716091845.png]]
 ## Other
-
-
-
-Row-Level Security and Column masking - fine grained access control for streaming and materialized tables
-
 Change Data Feed (CDF) - capture row level changes from streaming tables and use them in downstream applications, such as audit logs or CDC propagation
-
-Databricks Asset Bundles (DABs) - enable you to programatically validate, deploy, and run Databricks resources such as pipelines for CI/CD prod workloads.

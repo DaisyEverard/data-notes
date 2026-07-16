@@ -13,3 +13,9 @@ e.g Trying to put a string in a numerical column with result in the `_rescued_da
 If you try to put a number in a string column that will not fail and rescued data will be empty
 
 You include it in a .read by using `.option("rescuedDataColumn", "_rescued_data")`
+
+### Schema Hints
+schemaHints are a way to declare a new column which is expected to appear in upcoming files but isn't in the schema yet. It will populate automatically once records with the new column come through.
+Old rows will have NULL for the new column, so any constraints on the column must be null-tolerant to not drop all the old data.
+`FROM STREAM read_files(...schemaHints => 'loyalty_tier' STRING, region_code STRING)`
+

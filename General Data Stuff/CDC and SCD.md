@@ -1,5 +1,5 @@
 ### CDC
-Change Data Capture is a way of tracking and capturing changes in a data source then applying it to a target table. This includes updates, new information, and information to be deleted.
+Change Data Capture is a way of tracking and capturing changes in a data source then applying it to a target table. This includes updates, new information (inserts), and information to be deleted.
 
 ### SCD
 Slowly Changing Dimensions define how to track historical changes such as a customer's address.
