@@ -7,6 +7,12 @@ the **Spark Driver** - used as the entry point and is used to create a spark ses
 **Transformations**  - manipulate RDDs on a cluster
 **Actions** - return a computation back to the main driver program
 ![[Spark diagram.png]]
+### Processing
+Jobs are run in parallel. Each is broken down into stages which are ordered steps. Stages are broken down into tasks where a partition of data to process is assigned
+
+The Driver controls Worker nodes. Worker nodes host executor processes. Executors how the chunk of data to be processed. The chunk of data is the spark partition.
+Executors have multiple slots/cores/threads which can each be assigned a task.
+
 ### Modules
 modules have been developed to add extra functionality to spark. Some examples are:
 **SparkSQL** - converts SQL into spark tasks

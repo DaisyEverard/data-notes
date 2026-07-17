@@ -18,7 +18,7 @@ Masking means partially obscuring or transforming values rather than completely 
 Row-Level Security and Column masking - fine grained access control for streaming and materialized tables
 
 This is an example of a row filter.
-the if function has the syntax `IF(condition, value_if_true, value_if_false)`
+the if function has the syntax `IF(condition, value_if_true, value_if_false)`. Each table can only have ONE row filter.
 It is TRUE for users in the admin group
 it is TRUE for non-admin users when region is US
 it is FALSE for non-admin users for any other region
@@ -38,6 +38,9 @@ RETURN CASE WHEN IS MEMBER('admin') THEN column ELSE '*****' END;
 ALTER TABLE users ALTER COLUMN column SET MASK mask_if_not_admin
 ```
 For row filtering and column masks you need to use UDFs to attach them to the table so it may reduce the efficiency of your processing and not be the most efficient approach.
+Row filters and column masks must be written in SQL.
+
+Masking still allows inference as it masks after the query is calculated. For instance if the customer ID is masked to be `***` and I query `select * from foo where customer_id = 3` then I will get all the results where customer ID is 3. It will just say `***` but I will know it's 3.
 
 - Build-in data skipping optimizations (z-order) and housekeeping of obsolete/deleted data (VACUUM)
 - Uses transactional logs for auditing

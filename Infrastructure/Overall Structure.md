@@ -5,3 +5,5 @@ Unity Catalog on top as a centralized data catlog for control, auditing, data li
 [[Lakeflow]] tools for data engineering in databricks. Ingestion, pipelines, and jobs.
 
 [[Proton]] processing engine
+
+![[831_full_slide11_1 1.jpg]]

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Testing + Production/Data Privacy.md",
+                "file": "00 General Data Stuff/Spark/Spark Overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Data Privacy"
+              "title": "Spark Overview"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "mask",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,8 +74,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -186,43 +185,52 @@
   },
   "active": "039a4b47a235b71b",
   "lastOpenFiles": [
+    "00 General Data Stuff/Spark/Useful Functions.md",
+    "00 General Data Stuff/Spark/SparkSession.md",
+    "00 General Data Stuff/Spark/Spark Overview.md",
+    "00 General Data Stuff/Spark/RDDs.md",
+    "00 General Data Stuff/Spark/Distributed Compute.md",
+    "Data Management/Data Privacy.md",
+    "Performance Optimization",
+    "Data Management/Change Data Feed (CDF).md",
+    "Infrastructure/System Tables.md",
+    "Lakeflow/Lakeflow Declarative Pipelines.md",
+    "00 General Data Stuff/SQL stuff/SQL Command Types.md",
+    "Infrastructure/Overall Structure.md",
+    "Data Management/Pseudonymization & Anonymization.md",
+    "Data Management/Data Isolation.md",
+    "01 Images/Data Protection Techniques Overview.jpg",
+    "Data Protection Techniques Overview 1.jpg",
+    "831_full_slide11_1.jpg",
+    "831_full_slide11_1 1.jpg",
+    "01 Images/external access process.png",
+    "Other stuff to talk about.md",
+    "Glossary.md",
+    "01 Images/control and data plane.png",
+    "Ingestion/Managed Connectors.md",
+    "Lakeflow/Lakeflow connect.md",
+    "01 Images/hilbert.gif",
+    "Data Management",
+    "01 Images/Pasted image 20260716091845.png",
+    "Untitled.canvas",
     "Infrastructure/View types.md",
-    "Testing + Production/Data Privacy.md",
     "Testing + Production/Types of testing.md",
     "Testing + Production/Testing Pyspark.md",
-    "Lakeflow/Lakeflow Declarative Pipelines.md",
     "Testing + Production/CI CD.md",
     "Testing/Untitled.md",
-    "General Data Stuff/Patterns.md",
+    "00 General Data Stuff/Patterns.md",
     "Ingestion/Metadata and Rescued Data Columns.md",
     "Ingestion/Cloud Ingestion.md",
-    "General Data Stuff/CDC and SCD.md",
-    "Pasted image 20260716091845.png",
-    "Glossary.md",
-    "Lakeflow/Spark Declarative Pipelines.md",
-    "Infrastructure/Table Types.md",
-    "hilbert.gif",
-    "Other stuff to talk about.md",
+    "00 General Data Stuff/CDC and SCD.md",
     "Testing + Production",
-    "Lakeflow/Streaming Joins.md",
-    "Infrastructure/Compute.md",
-    "Ingestion/Ingestion Types.md",
-    "Infrastructure/System Tables.md",
-    "Lakeflow/Lakeflow Jobs.md",
-    "General Data Stuff/SQL stuff/SQL Command Types.md",
-    "General Data Stuff/SQL stuff/MERGE INTO.md",
-    "Lakeflow/Lakeflow connect.md",
-    "General Data Stuff/Optimization.md",
-    "General Data Stuff/ACID Transactions.md",
-    "Infrastructure/Monitoring.md",
-    "General Data Stuff/SQL stuff",
-    "Images/glom example.png",
-    "Images/Spark diagram.png",
-    "Images",
-    "General Data Stuff/Spark",
+    "00 General Data Stuff/SQL stuff",
+    "01 Images/glom example.png",
+    "01 Images/Spark diagram.png",
+    "01 Images",
+    "00 General Data Stuff/Spark",
     "Infrastructure",
     "Lakeflow",
     "Ingestion",
-    "General Data Stuff"
+    "00 General Data Stuff"
   ]
 }

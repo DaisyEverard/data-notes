@@ -204,5 +204,3 @@ The pre-requisites for iceberg reads are:
   `'delta.universalFormat.enabledFormats'='iceberg'`
 
 ![[Pasted image 20260716091845.png]]
-## Other
-Change Data Feed (CDF) - capture row level changes from streaming tables and use them in downstream applications, such as audit logs or CDC propagation
