@@ -13,6 +13,7 @@ Jobs are run in parallel. Each is broken down into stages which are ordered step
 The Driver controls Worker nodes. Worker nodes host executor processes. Executors how the chunk of data to be processed. The chunk of data is the spark partition.
 Executors have multiple slots/cores/threads which can each be assigned a task.
 
+Catalyst optimizer -  the query optimization framework inside Spark SQL that turns user queries into efficient execution plans
 ### Modules
 modules have been developed to add extra functionality to spark. Some examples are:
 **SparkSQL** - converts SQL into spark tasks

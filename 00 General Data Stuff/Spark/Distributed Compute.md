@@ -16,9 +16,10 @@ They are more flexible in that you can store any kind of file in any format so y
 ### MapReduce
 Now Apache Spark is used a better alternative.
 MapReduce is a framework composed of 2 actions: map and reduce.
-Map collects specifically defined elements of data from each node ad key-value tuple pairs
+Map collects specifically defined elements of data from each node as key-value tuple pairs
 Reduce is an analytical function applied to each tuple.
 The advantage is that all nodes can work independently without bottlenecks where they are waiting on other processes.
+![[MapReduce.png]]
 
 ### Apache Spark
 better performance big data processing system than MapReduce due to being able to process data in a worker node's memory instead of processing on disk like MapReduce
@@ -27,13 +28,6 @@ It can be run on a single node/computer so isn't necessarily distributed compute
 
 ### Data Partitioning
 How data is split up and sent to different nodes. The default in spark is 200 partitions.
-##### Narrow data transformations
-Each piece of input data contributes only one part of the output. This means the data required to process the records in one partition comes from at most one partition of the parent RDD.
-Most importantly they do not require shuffling. Some examples include Map and Filter
-###### Wide data transformations
-input data from multiple partitions contribute to a single partition in the output. This is more common and requires shuffling of data across multiple partitions.
-examples include GroupBy and ReduceByKey transformations.
-
 ###### execution plans
 a two stage process of logical and physical plans.
 The logical plan is an abstract representation of the sequence of steps required. Spark's catalyst optimizer analyses and applies optimization rules.

@@ -1,8 +1,11 @@
-Idempotency - Tracking files which have previously been ingested and only taking the delta
+**Idempotency** - Tracking files which have previously been ingested and only taking the delta
+**Cardinality** - low cardinality=few unique values. high cardinality means a lot of unique values. An ID column would be high cardinality.
 
 [[RDDs]] - Resilient Distributed Datasets
 RDPGs - resilient distributed property graphs
 DAG - Directed Acyclic Graph. The way
+NVMe - ==**Non-Volatile Memory Express**==. fast data transfer protocol designed specifically for modern flash storage (SSDs)
+SSDs - Solid-State Drive. non-volatile data storage device used in computers.
 
 **Commuative Process** - a process where order does not matter
 **Associative Process** - a process where grouping does not matter.

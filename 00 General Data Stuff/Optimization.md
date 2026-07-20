@@ -4,11 +4,6 @@
 **High execution time** suggests need for join optimization, broadcast strategies, or skew handling
 **Resource Bottlenecks** suggests memory, CPU, or I/O constraints that require cluster configuration adjustments
 
-### Skew Handling
-skew is when data is unevenly partitioned meaning some nodes are overloaded while others are idle. It causes performance bottlenecks and means your resources are not being used optimally.
-
-strategies include salting, broadcast joins, repartitioning (optionally with salting), adjusting shuffle partitions, or separately handing heavily overloaded keys and processing differently if it's known what they are
-
 ### Partitioning Strategies
 Partitioning is how spark splits data across cluster nodes, for more see [[Distributed Compute]]. 
 
